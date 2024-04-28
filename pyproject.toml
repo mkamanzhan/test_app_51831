@@ -1,0 +1,108 @@
+[project]
+name = "galatix-test-project"
+version = "0.1.0"
+description = "Default template for PDM package"
+authors = [
+    {name = "m.k.amanzhan@gmail.com", email = "m.k.amanzhan@gmail.com"},
+]
+dependencies = [
+    "loguru==0.*",
+    "fastapi==0.*",
+    "pydantic==2.*",
+    "pydantic-settings==2.*",
+    "uvicorn==0.*",
+    "gensim==4.*",
+    "scipy==1.12.*",
+    "requests>=2.31.0",
+    "redis>=5.0.4",
+    "polars>=0.20.22",
+]
+requires-python = "==3.11.*"
+readme = "README.md"
+license = {text = "MIT"}
+
+
+[tool.pdm]
+distribution = false
+
+[tool.pdm.dev-dependencies]
+dev = [
+    "black==24.*",
+    "isort==5.*",
+    "bandit==1.*",
+    "mypy==1.*",
+    "ruff==0.*",
+    "pre-commit==3.*",
+    "pytest==8.*",
+    "ipdb==0.*",
+    "pytest-asyncio==0.*",
+    "httpx==0.*",
+    "freezegun==1.*",
+]
+
+# --- Tools Configs --------------------------------------------------------------------------------
+[tool.pytest.ini_options]
+asyncio_mode="auto"
+
+[tool.isort]
+profile = "black"
+line_length = 100
+
+[tool.black]
+target-version = ["py311"]
+line-length = 100
+
+[tool.mypy]
+python_version = "3.11"
+ignore_missing_imports = true
+
+[tool.ruff]
+line-length = 100
+
+[tool.lint.ruff]
+select = [
+    "E",  # pycodestyle
+    "W",  # pycodestyle warnings
+    "F",  # Pyflakes
+    "N",  # pep8-naming
+    # "D",  # pydocstyle
+    "UP",  # pyupgrade
+    "ASYNC",  # flake8-async
+    "ANN",  # flake8-annotations
+    "S",  # flake8-bandit
+    "BLE",  # flake8-blind-except
+    "B",  # flake8-bugbear
+    "A",  # flake8-builtins
+    "COM",  # flake8-commas
+    "C4",  # flake8-comprehensions
+    "DTZ",  # flake8-datetimez
+    "EM",  # flake8-errmsg
+    "ISC",  # flake8-implicit-str-concat
+    "ICN",  # flake8-import-conventions
+    "G",  # flake8-logging-format
+    "INP",  # flake8-no-pep420
+    "PIE",  # flake8-pie
+    "T20",  # flake8-print
+    "PYI",  # flake8-pyi
+    "PT",  # flake8-pytest-style
+    "Q",  # flake8-quotes
+    "RSE",  # flake8-raise
+    "RET",  # flake8-return
+    "SLF",  # flake8-self
+    "SIM",  # flake8-simplify
+    "TID",  # flake8-tidy-imports
+    "TCH",  # flake8-type-checking
+    "INT",  # flake8-gettext
+    "ARG",  # flake8-unused-arguments
+    "PTH",  # flake8-use-pathlib
+    "TD",  # flake8-todo
+    "FIX",  # flake8-fixme
+    "ERA",  # eradicate
+    "PL",  # pylint
+    "TRY",  # tryceratops
+]
+
+ignore = [
+    "D104", "D417", "PLR2004",
+    # "N818", "TRY401", "ANN101", "ANN102", "ANN401", "A003", "PLR0913" # fixme this line
+]
